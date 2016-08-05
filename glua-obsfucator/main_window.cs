@@ -24,6 +24,11 @@ namespace glua_obsfucator
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Initial Load
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void main_Load(object sender, EventArgs e)
         {
             //MessageBox.Show("PRODUCT NOTICE\n\nthis Is freeware. If you paid any amount of money for this program\nrefund it as you were just scammed.", "NOTICE", MessageBoxButtons.OK);
@@ -43,13 +48,18 @@ namespace glua_obsfucator
             return sb.ToString();
         }
 
-        // Credits to Original Source: http://stackoverflow.com/questions/1344221/how-can-i-generate-random-alphanumeric-strings-in-c
-
-        public static string RandomString(int length)
+        // Credits to Original Source: http://stackoverflow.com/questions/1122483/random-string-generator-returning-same-string
+        private static readonly Random Random = new Random((int)DateTime.Now.Ticks);
+        private static string RandomString(int size)
         {
-            const string chars = " {}#.*(%)!$ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-            var random = new Random();
-            return new string(Enumerable.Repeat(chars, length).Select(s => s[random.Next(s.Length)]).ToArray());
+            var builder = new StringBuilder();
+            for (var i = 0; i < size; i++)
+            {
+                var ch = Convert.ToChar(Convert.ToInt32(Math.Floor(26 * Random.NextDouble() + 65)));
+                builder.Append(ch);
+            }
+
+            return builder.ToString();
         }
 
         /// <summary>
@@ -134,10 +144,14 @@ namespace glua_obsfucator
                     LUA_FUNCTIONS.Add(sVariable);
                 }
 
-                obsfucated += sLine +
+                obsfucated += (obs_commentspam.Checked
+                    ? " " + (!bSwitchCommentSpam ? "/*" : "--[[") + " " +
+                      StringToHex(RandomString(line.Length*(obs_lowratio.Checked ? 3 : 20))) +
+                      " " + (!bSwitchCommentSpam ? "*/" : "]]")
+                    : "") + sLine +
                               (obs_commentspam.Checked
                                   ? " " + (bSwitchCommentSpam ? "/*" : "--[[") + " " +
-                                    RandomString(line.Length*(obs_lowratio.Checked ? 5 : 25)) +
+                                    StringToHex(RandomString(line.Length*(obs_lowratio.Checked ? 5 : 25))) +
                                     " " + (bSwitchCommentSpam ? "*/" : "]]")
                                   : "") +
                               (obs_spacecode.Checked
