@@ -1,0 +1,9 @@
+D:\c++ projects\glua-obsfucator\glua-obsfucator\bin\Release\glua-obsfucator.exe.config
+D:\c++ projects\glua-obsfucator\glua-obsfucator\bin\Release\glua-obsfucator.exe
+D:\c++ projects\glua-obsfucator\glua-obsfucator\bin\Release\glua-obsfucator.pdb
+D:\c++ projects\glua-obsfucator\glua-obsfucator\obj\Release\glua_obsfucator.Properties.Resources.resources
+D:\c++ projects\glua-obsfucator\glua-obsfucator\obj\Release\glua-obsfucator.csproj.GenerateResource.Cache
+D:\c++ projects\glua-obsfucator\glua-obsfucator\obj\Release\glua-obsfucator.exe
+D:\c++ projects\glua-obsfucator\glua-obsfucator\obj\Release\glua-obsfucator.pdb
+D:\c++ projects\glua-obsfucator\glua-obsfucator\obj\Release\glua_obsfucator.main_window.resources
+D:\c++ projects\glua-obsfucator\glua-obsfucator\obj\Release\glua-obsfucator.csprojResolveAssemblyReference.cache
